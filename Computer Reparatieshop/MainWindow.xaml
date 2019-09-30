@@ -4,9 +4,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Computer_Reparatieshop"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="MainWindow" Height="500" Width="1000">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="Bestand" >
+                <MenuItem Header="Open" Click="MenuItem_Click" />
+                <MenuItem Header="Opslaan" Click="MenuItem_Click_1" />
+            </MenuItem>
+        </Menu>
+
+        <StackPanel Grid.Row="1">
+            <Label Content="Opdrachtgever"></Label>
+            <TextBox Name="txtOpdrachtgever"></TextBox>
+            <Label Content="Opdracht"></Label>
+            <TextBox Name="txtOpdracht"></TextBox>
+            <Label Content="Status"></Label>
+            <ListBox Name="lbxStatus"></ListBox>
+            <Label Content="Deadline"></Label>
+            <DatePicker Name="dtpDeadline"></DatePicker>
+            <Label Content="Reparateur"></Label>
+            <ComboBox Name="cmbReparateur"></ComboBox>
+            <Button Content="Bevestig Invoer" Click="Button_Click"></Button>
+            <Button Content="Toon Mannen" Click="ButtonM_Click"></Button>
+            <Button Content="Toon Vrouwen" Click="ButtonV_Click"></Button>
+            <Button Content="Sorteer op prioriteit" Click="ButtonP_Click"></Button>
+            <Button Content="Selecteer data" Click="Button3_Click"></Button>
+            <Button Content="Zoek Persoon" Click="ButtonZ_Click"></Button>
+            <TextBox Name="txt"></TextBox>
+            <Label Name="lbl"></Label>
+        </StackPanel>
+
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="True" Grid.Column="1" Grid.Row="1" Name="dg">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Opdrachtgever" Binding="{Binding Opdrachtgever}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Opdracht" Binding="{Binding Opdracht}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Reparateur" Binding="{Binding Reparateur}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Deadline" Binding="{Binding Deadline, StringFormat=dd-MM-yyyy}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tijd resterend" Binding="{Binding Resterendetijd}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
